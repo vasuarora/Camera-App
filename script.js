@@ -1,5 +1,6 @@
 let videoPlayer=document.querySelector("video");
 let recordBtn=document.querySelector("#record");
+let captureBtn=document.querySelector('#capture');
 
 let promiseToUseCamera=navigator.mediaDevices.getUserMedia({
     audio:true,
@@ -20,6 +21,27 @@ recordBtn.addEventListener("click",function(e){
         mediaRecorder.start();
         isRecording=true;
     }
+})
+
+captureBtn.addEventListener("click",function(e){
+    let canvas=document.createElement("canvas");
+
+    canvas.width=videoPlayer.videoWidth;
+    canvas.height=videoPlayer.videoHeight;
+
+    let tool=canvas.getContext("2d");
+
+    tool.drawImage(videoPlayer,0,0);
+
+    let url=canvas.toDataURL();
+
+    let a=document.createElement("a");
+    a.href=url;
+
+    a.download="image.png";
+    a.click();
+    a.remove();
+    
 })
 
 promiseToUseCamera.then(function(mediaStream){
