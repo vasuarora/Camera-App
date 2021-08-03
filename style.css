@@ -72,6 +72,18 @@ button:hover{
     top:60vh;
 }
 
+#rec-animation{
+    animation: shrinkDownUp;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+}
+
+#capture-animation{
+    animation: inout;
+    animation-duration: 0.9s;
+    animation-iteration-count: 1;
+}
+
 .zoom{
     height: 8rem;
     width: 4rem;
@@ -104,4 +116,33 @@ button:hover{
 
 #gallery{
     top:82vh;
+}
+
+@keyframes shrinkDownUp{
+    0%{
+        color: red;
+    }
+
+    50%{
+        color: black;
+    }
+
+    100%{
+        color: red;
+    }
+}
+
+@keyframes inout{
+    0%{
+        color:black;
+    }
+
+    50%{
+        transform: scale(1.1);
+        color:red;
+    }
+
+    100%{
+        color:black;
+    }
 }

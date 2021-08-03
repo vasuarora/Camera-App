@@ -17,18 +17,28 @@ let mediaRecorder;
 let isRecording=false;
 
 recordBtn.addEventListener("click",function(e){
+    let innerspan=recordBtn.querySelector("span");
     if(isRecording){
         mediaRecorder.stop();
+        innerspan.removeAttribute("id");
         isRecording=false;
     }
 
     else{
         mediaRecorder.start();
+        innerspan.setAttribute('id',"rec-animation");
         isRecording=true;
     }
 })
 
 captureBtn.addEventListener("click",function(e){
+    let innerspan=captureBtn.querySelector("span");
+    innerspan.setAttribute('id',"capture-animation");
+
+    setTimeout(function(){
+        innerspan.removeAttribute("id");
+    },1000);
+
     let canvas=document.createElement("canvas");
 
     canvas.width=videoPlayer.videoWidth;
@@ -46,8 +56,8 @@ captureBtn.addEventListener("click",function(e){
     let url=canvas.toDataURL();
 
     let a=document.createElement("a");
+    
     a.href=url;
-
     a.download="image.png";
     a.click();
     a.remove();
