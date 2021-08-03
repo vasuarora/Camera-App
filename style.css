@@ -38,6 +38,25 @@ button span{
     transform: translate(-50%,-50%);
 }
 
+.filters{
+    height: 15rem;
+    width: 7rem;
+    position: absolute;
+    background-color: white;
+    top: 10rem;
+    left: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter{
+    flex-grow: 1;
+    border: 1px solid;
+    background-blend-mode: color-burn;
+    background-image: url('https://wallpapercave.com/wp/wp4564082.jpg');
+    background-size: cover;
+}
+
 #record span {
     background-color: red;
 }
@@ -52,4 +71,38 @@ button span{
 
 #record{
     top:60vh;
+}
+
+.zoom{
+    height: 8rem;
+    width: 4rem;
+    position: absolute;
+    top: 4rem;
+    right: 5.5rem;
+    background-color: #dfe6e9;
+    display: flex;
+    flex-direction: column;
+}
+
+.zoom div{
+    flex-grow: 1;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.material-icons{
+    font-size: 2.5rem!important;
+}
+
+#gallery{
+    top:82vh;
+    border-radius: 0;
+    width:6.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    right:4.3rem;
+    border: 5px solid #636e72;
+    font-family: 'Raleway', sans-serif;
 }

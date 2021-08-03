@@ -41,7 +41,6 @@ captureBtn.addEventListener("click",function(e){
     a.download="image.png";
     a.click();
     a.remove();
-    
 })
 
 promiseToUseCamera.then(function(mediaStream){
