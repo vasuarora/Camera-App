@@ -12,18 +12,18 @@ let isRecording=false;
 
 recordBtn.addEventListener("click",function(e){
     if(isRecording){
-        MediaRecorder.stop();
-        isRecording=true;
+        mediaRecorder.stop();
+        isRecording=false;
     }
 
     else{
-        MediaRecorder.start();
-        isRecording=false;
+        mediaRecorder.start();
+        isRecording=true;
     }
 })
 
 promiseToUseCamera.then(function(mediaStream){
-    videoPlayer.srcObject=mediaStream;
+    videoPlayer.srcObject=mediaStream; 
 
     mediaRecorder=new MediaRecorder(mediaStream);
 
@@ -32,7 +32,7 @@ promiseToUseCamera.then(function(mediaStream){
     })
 
     mediaRecorder.addEventListener("stop",function(e){
-        let blob=new Blob(chunks, {'type' : 'video.mp4'});
+        let blob=new Blob(chunks, {type : "video.mp4"});
         chunks=[];
 
         let link=URL.createObjectURL(blob);
