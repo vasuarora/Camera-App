@@ -1,6 +1,7 @@
 let videoPlayer=document.querySelector("video");
 let recordBtn=document.querySelector("#record");
-let captureBtn=document.querySelector('#capture');
+let captureBtn=document.querySelector("#capture");
+let galleryBtn=document.querySelector("#gallery");
 
 let body=document.querySelector("body");
 
@@ -50,6 +51,10 @@ captureBtn.addEventListener("click",function(e){
     a.download="image.png";
     a.click();
     a.remove();
+})
+
+galleryBtn.addEventListener("click",function(e){
+    location.assign("gallery.html");
 })
 
 let allFilters=document.querySelectorAll(".filter");

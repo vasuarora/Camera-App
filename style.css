@@ -25,18 +25,15 @@ button{
     height: 5rem;
     width: 5rem;
     border-radius: 50%;
-    border: 8px solid #636e72;
+    border: 7px solid #636e72;
     z-index:2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button span{
-    height: 60%;
-    width: 60%;
-    border-radius: 50%;
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+button:hover{
+    background-color: #636e72;
 }
 
 .filters{
@@ -67,14 +64,6 @@ button span{
     z-index:1;
 }
 
-#record span {
-    background-color: red;
-}
-  
-#capture span {
-    background-color: white;
-}
-
 #capture{
     top:40vh;
 }
@@ -95,6 +84,11 @@ button span{
     z-index:2;
 }
 
+.zoom div span:hover{
+    transform: scale(1.1);
+    transition: 0.6s;
+}
+
 .zoom div{
     flex-grow: 1;
     border: 1px solid;
@@ -105,15 +99,9 @@ button span{
 
 .material-icons{
     font-size: 2.5rem!important;
+    cursor: default;
 }
 
 #gallery{
     top:82vh;
-    border-radius: 0;
-    width:6.5rem;
-    height: 3.5rem;
-    font-size: 1.5rem;
-    right:4.3rem;
-    border: 5px solid #636e72;
-    font-family: 'Raleway', sans-serif;
 }
