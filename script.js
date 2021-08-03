@@ -2,6 +2,10 @@ let videoPlayer=document.querySelector("video");
 let recordBtn=document.querySelector("#record");
 let captureBtn=document.querySelector('#capture');
 
+let body=document.querySelector("body");
+
+let filter;
+
 let promiseToUseCamera=navigator.mediaDevices.getUserMedia({
     audio:true,
     video:true,
@@ -33,6 +37,11 @@ captureBtn.addEventListener("click",function(e){
 
     tool.drawImage(videoPlayer,0,0);
 
+    if(filter!=""){
+        tool.fillStyle=filter;
+        tool.fillRect(0,0,canvas.width,canvas.height);
+    }
+
     let url=canvas.toDataURL();
 
     let a=document.createElement("a");
@@ -42,6 +51,25 @@ captureBtn.addEventListener("click",function(e){
     a.click();
     a.remove();
 })
+
+let allFilters=document.querySelectorAll(".filter");
+
+for(let i=0;i<allFilters.length;i++){
+    allFilters[i].addEventListener("click",function(e){
+        let previousFilter=document.querySelector(".filter-div");
+
+        if(previousFilter){
+            previousFilter.remove();
+        }
+
+        let color=e.currentTarget.style.backgroundColor;
+        filter=color;
+        let div=document.createElement("div");
+        div.classList.add("filter-div");
+        div.style.backgroundColor=color;
+        body.append(div);
+    })
+}
 
 promiseToUseCamera.then(function(mediaStream){
     videoPlayer.srcObject=mediaStream; 

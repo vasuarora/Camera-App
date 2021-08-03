@@ -26,6 +26,7 @@ button{
     width: 5rem;
     border-radius: 50%;
     border: 8px solid #636e72;
+    z-index:2;
 }
 
 button span{
@@ -47,6 +48,7 @@ button span{
     left: 3rem;
     display: flex;
     flex-direction: column;
+    z-index:2;
 }
 
 .filter{
@@ -55,6 +57,14 @@ button span{
     background-blend-mode: color-burn;
     background-image: url('https://wallpapercave.com/wp/wp4564082.jpg');
     background-size: cover;
+}
+
+.filter-div{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top:0;
+    z-index:1;
 }
 
 #record span {
@@ -82,6 +92,7 @@ button span{
     background-color: #dfe6e9;
     display: flex;
     flex-direction: column;
+    z-index:2;
 }
 
 .zoom div{
