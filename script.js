@@ -2,6 +2,8 @@ let videoPlayer=document.querySelector("video");
 let recordBtn=document.querySelector("#record");
 let captureBtn=document.querySelector("#capture");
 let galleryBtn=document.querySelector("#gallery");
+let zoomIn=document.querySelector(".zoom-in");
+let zoomOut=document.querySelector(".zoom-out");
 
 let body=document.querySelector("body");
 
@@ -15,6 +17,7 @@ let promiseToUseCamera=navigator.mediaDevices.getUserMedia({
 let chunks=[];
 let mediaRecorder;
 let isRecording=false;
+let currZoom=1;
 
 recordBtn.addEventListener("click",function(e){
     let innerspan=recordBtn.querySelector("span");
@@ -46,9 +49,18 @@ captureBtn.addEventListener("click",function(e){
 
     let tool=canvas.getContext("2d");
 
+    //canvas origin co-ordianates from top left to center
+    tool.translate(canvas.width/2,canvas.width/2);
+
+    //stretch the canvas
+    tool.scale(currZoom,currZoom);
+
+    //tool back to original position
+    tool.translate(-canvas.width/2,-canvas.width/2);
+
     tool.drawImage(videoPlayer,0,0);
 
-    if(filter!=""){
+    if(filter!="" && filter){
         tool.fillStyle=filter;
         tool.fillRect(0,0,canvas.width,canvas.height);
     }
@@ -61,6 +73,28 @@ captureBtn.addEventListener("click",function(e){
     a.download="image.png";
     a.click();
     a.remove();
+})
+
+zoomIn.addEventListener("click",function(e){
+    currZoom=currZoom+0.1;
+
+    if(currZoom>3){
+        currZoom=3;
+    }
+
+    console.log(currZoom);
+    videoPlayer.style.transform=`scale(${currZoom})`;
+})
+
+zoomOut.addEventListener("click",function(e){
+    currZoom=currZoom-0.1;
+
+    if(currZoom<1){
+        currZoom=1;
+    }
+
+    console.log(currZoom);
+    videoPlayer.style.transform=`scale(${currZoom})`;
 })
 
 galleryBtn.addEventListener("click",function(e){
