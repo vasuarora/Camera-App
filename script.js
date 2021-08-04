@@ -21,6 +21,7 @@ let currZoom=1;
 
 recordBtn.addEventListener("click",function(e){
     let innerspan=recordBtn.querySelector("span");
+    
     if(isRecording){
         mediaRecorder.stop();
         innerspan.removeAttribute("id");

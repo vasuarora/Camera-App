@@ -52,7 +52,7 @@ function viewMedia(){
             mediaCard.innerHTML=`<div class="actual-media"></div>
             <div class="media-buttons">
                 <button class="media-download"><span class="material-icons"> file_download </span></button>
-                <button data-mid="${cursor.value.mid}" class="media-delete"><span class="material-icons"> delete </span></button>
+                <button data-mid="${cursor.value.mId}" class="media-delete"><span class="material-icons"> delete </span></button>
             </div>`
 
             let data=cursor.value.mediaData;
@@ -108,7 +108,8 @@ function viewMedia(){
             if(noOfMedia==0){
                 galleryContainer.innerText="No Media Available";
                 galleryContainer.style.textAlign="center";
-                galleryContainer.style.fontSize="x-large";
+                galleryContainer.style.fontSize="xx-large";
+                galleryContainer.style.color="white";
             }
         }
     })

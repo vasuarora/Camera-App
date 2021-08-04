@@ -34,19 +34,15 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #2d3436;
+    background-color: #4b4b4b;
 }
 
 .media-buttons button{
     border: none;
-    background-color:#2d3436;
+    background-color:#4b4b4b;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.media-buttons button span{
-    color:#ff3f34;
 }
 
 .actual-media img,.actual-media video {
