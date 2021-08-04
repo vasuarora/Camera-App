@@ -51,8 +51,8 @@ function viewMedia(){
 
             mediaCard.innerHTML=`<div class="actual-media"></div>
             <div class="media-buttons">
-                <button class="media-download"><span class="material-icons"> file_download </span></div>
-                <button data-mid="${cursor.value.mid}" class="media-delete"><span class="material-icons"> delete </span></div>
+                <button class="media-download"><span class="material-icons"> file_download </span></button>
+                <button data-mid="${cursor.value.mid}" class="media-delete"><span class="material-icons"> delete </span></button>
             </div>`
 
             let data=cursor.value.mediaData;
@@ -99,7 +99,7 @@ function viewMedia(){
 
                 actualMediaDiv.append("video");
             }
-            
+
             galleryContainer.append(mediaCard);
             cursor.continue();
         }
