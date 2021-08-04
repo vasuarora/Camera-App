@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+.gallery-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.media-card{
+    height:20rem;
+    width:20rem;
+}
+
+#back{
+    position: absolute;
+    right: 5rem;
+    height: 5rem;
+    width: 5rem;
+    top:40rem;
+    border-radius: 50%;
+    border: 7px solid #636e72;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover{
+    background-color: #636e72;
+}
+
+.material-icons{
+    font-size: 2.5rem!important;
+    cursor: default;
+}

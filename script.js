@@ -67,12 +67,7 @@ captureBtn.addEventListener("click",function(e){
 
     let url=canvas.toDataURL();
 
-    let a=document.createElement("a");
-    
-    a.href=url;
-    a.download="image.png";
-    a.click();
-    a.remove();
+    saveMedia(url);
 })
 
 zoomIn.addEventListener("click",function(e){
@@ -133,12 +128,7 @@ promiseToUseCamera.then(function(mediaStream){
         let blob=new Blob(chunks, {type : "video.mp4"});
         chunks=[];
 
-        let link=URL.createObjectURL(blob);
-        let a=document.createElement("a");
-        a.href=link;
-        a.download="video.mp4";
-        a.click();
-        a.remove();
+        saveMedia(blob);
     })
 })
 
