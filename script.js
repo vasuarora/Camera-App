@@ -9,12 +9,12 @@ let body=document.querySelector("body");
 
 let filter;
 
-let promiseToUseCamera=navigator.mediaDevices.getUserMedia({
+let promiseToUseCamera=navigator.mediaDevices.getUserMedia({           //seeking mic and camera permissions
     audio:true,
     video:true,
 })
 
-let chunks=[];
+let chunks=[];                       //to store video
 let mediaRecorder;
 let isRecording=false;
 let currZoom=1;
@@ -23,13 +23,13 @@ recordBtn.addEventListener("click",function(e){
     let innerspan=recordBtn.querySelector("span");
     
     if(isRecording){
-        mediaRecorder.stop();
+        mediaRecorder.stop();                              //stop recording         
         innerspan.removeAttribute("id");
         isRecording=false;
     }
 
     else{
-        mediaRecorder.start();
+        mediaRecorder.start();                            //start recording
         innerspan.setAttribute('id',"rec-animation");
         isRecording=true;
     }
@@ -43,7 +43,7 @@ captureBtn.addEventListener("click",function(e){
         innerspan.removeAttribute("id");
     },1000);
 
-    let canvas=document.createElement("canvas");
+    let canvas=document.createElement("canvas");                          
 
     canvas.width=videoPlayer.videoWidth;
     canvas.height=videoPlayer.videoHeight;
@@ -59,7 +59,7 @@ captureBtn.addEventListener("click",function(e){
     //tool back to original position
     tool.translate(-canvas.width/2,-canvas.width/2);
 
-    tool.drawImage(videoPlayer,0,0);
+    tool.drawImage(videoPlayer,0,0);                       //capturing the image on canvas
 
     if(filter!="" && filter){
         tool.fillStyle=filter;
@@ -71,7 +71,7 @@ captureBtn.addEventListener("click",function(e){
     saveMedia(url);
 })
 
-zoomIn.addEventListener("click",function(e){
+zoomIn.addEventListener("click",function(e){                   //zoom in
     currZoom=currZoom+0.1;
 
     if(currZoom>3){
@@ -79,10 +79,10 @@ zoomIn.addEventListener("click",function(e){
     }
 
     console.log(currZoom);
-    videoPlayer.style.transform=`scale(${currZoom})`;
+    videoPlayer.style.transform=`scale(${currZoom})`;                  //to show zoom effect on ui
 })
 
-zoomOut.addEventListener("click",function(e){
+zoomOut.addEventListener("click",function(e){                          //zoom out
     currZoom=currZoom-0.1;
 
     if(currZoom<1){
@@ -90,18 +90,18 @@ zoomOut.addEventListener("click",function(e){
     }
 
     console.log(currZoom);
-    videoPlayer.style.transform=`scale(${currZoom})`;
+    videoPlayer.style.transform=`scale(${currZoom})`;        
 })
 
 galleryBtn.addEventListener("click",function(e){
-    location.assign("gallery.html");
+    location.assign("gallery.html");                     //go to gallery page
 })
 
 let allFilters=document.querySelectorAll(".filter");
 
 for(let i=0;i<allFilters.length;i++){
     allFilters[i].addEventListener("click",function(e){
-        let previousFilter=document.querySelector(".filter-div");
+        let previousFilter=document.querySelector(".filter-div");             //removing previous filter
 
         if(previousFilter){
             previousFilter.remove();
@@ -122,11 +122,11 @@ promiseToUseCamera.then(function(mediaStream){
     mediaRecorder=new MediaRecorder(mediaStream);
 
     mediaRecorder.addEventListener("dataavailable",function(e){
-        chunks.push(e.data);
+        chunks.push(e.data);                
     })
 
     mediaRecorder.addEventListener("stop",function(e){
-        let blob=new Blob(chunks, {type : "video.mp4"});
+        let blob=new Blob(chunks, {type : "video.mp4"});                //creating a blob of chunks
         chunks=[];
 
         saveMedia(blob);

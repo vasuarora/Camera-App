@@ -2,15 +2,15 @@ let backBtn=document.querySelector("#back");
 let database;
 let noOfMedia=0;
 
-let req=indexedDB.open("Gallery",2);
+let req=indexedDB.open("Gallery",2);               //opening the database
 
-req.addEventListener("success",function(){
-    database=req.result;
+req.addEventListener("success",function(){                 
+    database=req.result;                           //storing the result of opening database
 })
 
 req.addEventListener("upgradeneeded",function(){
     let db=req.result;
-    db.createObjectStore("media",{keyPath:"mId"});
+    db.createObjectStore("media",{keyPath:"mId"});           //creating an object store
 })
 
 req.addEventListener("error",function(){})
@@ -20,13 +20,13 @@ function saveMedia(media){
         return;
     }
 
-    let data={
+    let data={                         //data object to be stored
         mId:Date.now(),
         mediaData:media,
     }
 
-    let tx=database.transaction("media","readwrite");
-    let mediaObjectStore=tx.objectStore("media");
+    let tx=database.transaction("media","readwrite");            //transaction object of read write type
+    let mediaObjectStore=tx.objectStore("media");                //returns an object store that has already been added to the scope of this transaction.
     mediaObjectStore.add(data);
 }
 
@@ -37,9 +37,9 @@ function viewMedia(){
 
     let galleryContainer=document.querySelector(".gallery-container");
     let tx=database.transaction("media","readonly");
-    let mediaObjectStore=tx.objectStore("media");
+    let mediaObjectStore=tx.objectStore("media");  
 
-    let req=mediaObjectStore.openCursor();
+    let req=mediaObjectStore.openCursor();                   //used to iterate over records in database
 
     req.addEventListener("success",function(){
         cursor=req.result;
@@ -86,7 +86,7 @@ function viewMedia(){
             else if(type=="object"){
                 //video
                 let video=document.createElement("video");
-                let url=URL.createObjectURL(data);
+                let url=URL.createObjectURL(data);                //creating the video url
                 video.src=url;
 
                 downloadBtn.addEventListener("click",function(e){
